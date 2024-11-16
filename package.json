@@ -14,8 +14,8 @@
   "contributes": {
     "commands": [
       {
-        "command": "auth-vault.helloWorld",
-        "title": "Hello World"
+        "command": "auth-vault.webview",
+        "title": "webview"
       }
     ]
   },

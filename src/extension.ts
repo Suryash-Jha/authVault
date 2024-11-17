@@ -1,26 +1,41 @@
 import * as vscode from 'vscode';
 
 export function activate(context: vscode.ExtensionContext) {
+    console.log('Extension "Auth Vault" is now active!');
+    vscode.window.showInformationMessage("Extension activated!");
 
-    console.log('Congratulations, your extension "Webview" is up and running now');
+    let webViewButton = vscode.window.registerWebviewViewProvider("authVaultView", {
+        resolveWebviewView(webviewView) {
+            console.log(webviewView, '---+++')
+            console.log("Resolving webview for Activity Bar...");
+            webviewView.webview.options = {
+                enableScripts: true,
+            };
 
-    let webview = vscode.commands.registerCommand('auth-vault.webview', () => {
-
-        let panel = vscode.window.createWebviewPanel("webview", "Web View", {
-            viewColumn: vscode.ViewColumn.One,
-        })
-
-        // will set the html here
-	panel.webview.html = `<h1>This is Heading 1</h1>
-    <h2>This is Suryash 2</h2>
-    <h3>This is Heading 3</h3>
-    <h4>This is Heading 4</h4>
-    <h5>This is Heading 5</h5>`
-
+            webviewView.webview.html = `
+                <h1>Activity Bar Webview</h1>
+                <p>Accessed from Activity Bar!</p>`;
+        },
     });
 
+    let webviewPanelCommand = vscode.commands.registerCommand('auth-vault.webview', () => {
+        console.log("Opening a Webview Panel...");
+        let panel = vscode.window.createWebviewPanel(
+            "webview", 
+            "Web View", 
+            vscode.ViewColumn.One, 
+            { enableScripts: true }
+        );
 
-    context.subscriptions.push(webview);
+        panel.webview.html = `
+            <h1>Webview Panel</h1>
+            <p>Accessed via command.</p>`;
+    });
+
+    context.subscriptions.push(webViewButton);
+    context.subscriptions.push(webviewPanelCommand);
 }
 
-export function deactivate() { }
+export function deactivate() {
+    console.log('Extension "Auth Vault" has been deactivated.');
+}

@@ -5,6 +5,11 @@
       "task": "Basic initialization of Auth Vault done using Yo",
       "created_at": "2024-11-16T11:44:40.426Z",
       "id": "250dcd61-f454-462b-8daa-bb7f0aad6bf5"
+    },
+    {
+      "task": "Webview added, without any media or css for now",
+      "created_at": "2024-11-16T11:55:39.954Z",
+      "id": "89041a02-8ee1-4a51-a3eb-6c84cfe35a6d"
     }
   ]
 }

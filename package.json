@@ -15,9 +15,28 @@
     "commands": [
       {
         "command": "auth-vault.webview",
-        "title": "webview"
+        "title": "Open Auth Vault"
       }
-    ]
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "authVault",
+          "title": "Auth Vault",
+          "icon": "media/token.png"
+        }
+      ]
+    },
+    "views": {
+      "authVault": [
+        {
+          "type": "webview",
+          "id": "authVaultView",
+          "name": "Auth Vault",
+          "icon": "media/token.png"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
